@@ -10,8 +10,8 @@ services:
     ports:
       - {{ server.port }}:21025
     environment:
-      - STEAM_USERNAME={{ steam_username }}
-      - STEAM_PASSWORD={{ steam_password }}
+      - STEAM_USERNAME={{ steam_user }}
+      - STEAM_PASSWORD={{ steam_pass }}
     volumes:
       - {{ directories_files }}/{{ server.name }}:/steamcmd/starbound
       #- {{ directories_files }}/{{ server.name }}/starbound_server.config:/steamcmd/starbound/starbound_server.config
