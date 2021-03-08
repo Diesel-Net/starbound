@@ -1,4 +1,4 @@
- steam_user: "{{ lookup('env', 'STEAM_USER') }}"
+steam_user: "{{ lookup('env', 'STEAM_USER') }}"
 steam_pass: "{{ lookup('env', 'STEAM_PASS') }}"
 
 # Valheim server configurations
