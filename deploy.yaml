@@ -4,6 +4,19 @@
   strategy: free
   tasks:
 
+    - name: Create all the directories
+      file:
+        path: '{{ directories_files }}/{{ server.name }}'
+        state: directory
+        mode: '0755'
+        owner: automation
+        group: automation
+      vars:
+        server: '{{ item }}'
+      with_items: '{{ servers }}'
+      loop_control:
+        label: '{{ directories_files }}/{{ item.name }}'
+
     - name: Render the starbound_server.config files
       template:
         src: starbound_server.config.j2
