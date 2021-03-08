@@ -6,25 +6,14 @@ services:
 {% for server in servers %}
 
   {{ server.name }}:
-    image: mbround18/valheim:1.2.0
+    image: didstopia/starbound-server
     ports:
-      - {{ server.port }}:{{ server.port }}/udp
-      - {{ server.port + 1 }}:{{ server.port + 1 }}/udp
-      - {{ server.port + 2 }}:{{ server.port + 2 }}/udp
+      - {{ server.port }}:21025
     environment:
-      - PORT={{ server.port }}
-      - NAME="{{ server.name }}"
-      - WORLD="{{ server.world }}"
-      - PASSWORD="{{ server.password }}"
-      - TZ={{ timezone }}
-      - PUID={{ puid }}
-      - PGID={{ guid }}
-      - PUBLIC={{ server.public | int }}
-      - AUTO_UPDATE={{ server.auto_update | int }}
-      - AUTO_UPDATE_SCHEDULE="{{ server.auto_update_schedule }}"
-      # Note: backups set up externally with hypervisor
+      - STEAM_USERNAME={{ steam_username }}
+      - STEAM_PASSWORD={{ steam_password }}
     volumes:
-      - {{ directories_files }}/{{ server.name }}/saves:/home/steam/.config/unity3d/IronGate/Valheim
-      - {{ directories_files }}/{{ server.name }}/server:/home/steam/valheim
+      - {{ directories_files }}/{{ server.name }}:/steamcmd/starbound
+      #- {{ directories_files }}/{{ server.name }}/starbound_server.config:/steamcmd/starbound/starbound_server.config
 
 {% endfor %}

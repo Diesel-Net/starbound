@@ -18,6 +18,11 @@ steps:
         from_secret: ansible_private_key
       vault_password:
         from_secret: ansible_vault_password
+    environment:
+      STEAM_USER:
+        from_secret: steam_user
+      STEAM_PASS:
+        from_secret: steam_pass
 
 trigger:
   branch:
