@@ -3,7 +3,7 @@ all:
 
     games:
       hosts:
-        games.diesel.net:
+        games.diesel.net
 
   vars:
     ansible_user: automation
